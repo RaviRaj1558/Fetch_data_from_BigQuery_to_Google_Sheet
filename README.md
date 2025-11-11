@@ -31,6 +31,33 @@ A Cloud Function that automatically exports employee management data from BigQue
 
 2. **Update Environment Variables:**
    ```python
-   project_id = "your-project-id"
-   bq_project = "your-bigquery-project"
-   bq_dataset = "your-dataset-name"
+   bq_project = "long-terminal-447308-d1"
+   bq_dataset = "freshsales_data"
+   bq_table = "WTi_employee_details"
+   
+### **Functions**
+
+**get_secret(secret_name, project_id)**
+Fetches and parses secrets from GCP Secret Manager.
+
+**load_data_from_bigquery(bq_dict, bq_project, bq_dataset)**
+Loads employee data from BigQuery using service account credentials.
+
+**send_data_to_gsheet(df, worksheet_name, spreadsheet_id, gs_dict)**
+Sends DataFrame data to Google Sheets, creating or clearing worksheets as needed.
+
+**zero_to_blank(df)**
+Data cleaning function that converts zero values to blanks.
+
+**main(request)**
+Cloud Function entry point that orchestrates the entire data export process.
+
+### **Output (Google Sheets)**
+Worksheet named "Manager_Mail_id" with columns:
+
+1.Employee Code
+
+2.Email ID
+
+3.Manager Email ID
+   
